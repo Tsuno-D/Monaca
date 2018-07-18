@@ -94,84 +94,15 @@
     </ons-page>
   </ons-template>
   <!-- ここまでスライドメニュー -->
-
-
+  
 
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAk2ufCm4choFeF72Crpjgu3ifSHhW4iY0",
-    authDomain: "sotsuken-38cc3.firebaseapp.com",
-    databaseURL: "https://sotsuken-38cc3.firebaseio.com",
-    projectId: "sotsuken-38cc3",
-    storageBucket: "sotsuken-38cc3.appspot.com",
-    messagingSenderId: "455827896303"
-  };
-  firebase.initializeApp(config);
-</script>
-  
-  
-  <script>// Angularのモジュールとコントローラー作成
-    // myAppモジュールを新規に作成
-    angular.module('myApp', []);
-    // myAppモジュールにHelloControllerコントローラーを登録
-    angular.module('myApp')
-      .controller('HelloController', function($scope) {
-        $scope.msg = 'Hello, AngularJS!';
-      });
-  </script>
 
+<script type="text/javascript" src="js/firebaseConfig.js"></script>
+  
+<script type="text/javascript" src="js/angularModule.js"></script>
 
-  <script>// アカウント関連処理
-    var _this;
-    ons.bootstrap()
-      .controller('HelloController', function($timeout) {
-        _this = this;
-        this.newMail;
-        this.newPassword;
-        this.mail;
-        this.password;
-        this.isLoggedIn;
-        this.$timeout = $timeout;
-     
-        // 新規ユーザ登録
-        this.regi = function() {
-          // 新規ユーザーの登録機能
-          firebase.auth().createUserWithEmailAndPassword(this.newMail, this.newPassword).catch(function(error) {
-            alert(error.message);
-          });
-        }
-     
-        // ログイン
-        this.login = function() {
-          // 新規ユーザーの登録機能
-          firebase.auth().signInWithEmailAndPassword(this.mail, this.password).catch(function(error) {
-            alert(error.message);
-          });
-        }
-     
-        // ログアウト
-        this.logout = function() {
-          firebase.auth().signOut();
-        }
-      });
-      
-    ons.ready(function() {
-      // 認証状態変更検知
-      firebase.auth().onAuthStateChanged(function(user) {
-        _this.$timeout(function() {
-          if (user) {
-            // ログイン状態
-            _this.isLoggedIn = true;
-          } else {
-            // ログアウト状態
-            _this.isLoggedIn = false;
-          }
-        })
-      });
-    });
-  </script>
+<script type="text/javascript" src="js/accounts.js"></script>
 
 <script type="text/javascript" src="js/formToJson.js"></script>
 
